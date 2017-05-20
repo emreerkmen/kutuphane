@@ -38,7 +38,7 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txt_UyeGiris = new System.Windows.Forms.Button();
+            this.btn_UyeGiris = new System.Windows.Forms.Button();
             this.txt_UyeSifre = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txt_UyeTC = new System.Windows.Forms.TextBox();
@@ -141,7 +141,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.txt_UyeGiris);
+            this.groupBox2.Controls.Add(this.btn_UyeGiris);
             this.groupBox2.Controls.Add(this.txt_UyeSifre);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.txt_UyeTC);
@@ -153,15 +153,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Kullanıcı Bilgisi";
             // 
-            // txt_UyeGiris
+            // btn_UyeGiris
             // 
-            this.txt_UyeGiris.Location = new System.Drawing.Point(148, 100);
-            this.txt_UyeGiris.Name = "txt_UyeGiris";
-            this.txt_UyeGiris.Size = new System.Drawing.Size(87, 39);
-            this.txt_UyeGiris.TabIndex = 0;
-            this.txt_UyeGiris.Text = "Giriş";
-            this.txt_UyeGiris.UseVisualStyleBackColor = true;
-            this.txt_UyeGiris.Click += new System.EventHandler(this.txt_UyeGiris_Click);
+            this.btn_UyeGiris.Location = new System.Drawing.Point(148, 100);
+            this.btn_UyeGiris.Name = "btn_UyeGiris";
+            this.btn_UyeGiris.Size = new System.Drawing.Size(87, 39);
+            this.btn_UyeGiris.TabIndex = 0;
+            this.btn_UyeGiris.Text = "Giriş";
+            this.btn_UyeGiris.UseVisualStyleBackColor = true;
+            this.btn_UyeGiris.Click += new System.EventHandler(this.txt_UyeGiris_Click);
             // 
             // txt_UyeSifre
             // 
@@ -229,7 +229,7 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button txt_UyeGiris;
+        private System.Windows.Forms.Button btn_UyeGiris;
         private System.Windows.Forms.TextBox txt_UyeSifre;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txt_UyeTC;

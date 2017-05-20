@@ -26,6 +26,7 @@
         <AssociationConnector Association="kutuphaneDBModel.FK_VOLUME_KUTUPHANE" ManuallyRouted="false" />
         <AssociationConnector Association="kutuphaneDBModel.FK_ODUNC_UYE" ManuallyRouted="false" />
         <AssociationConnector Association="kutuphaneDBModel.FK_ODUNC_VOLUME" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="kutuphaneDBModel.sysdiagrams" Width="1.5" PointX="7.375" PointY="5.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

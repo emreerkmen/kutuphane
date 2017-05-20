@@ -20,24 +20,33 @@ namespace UretimBilgiProje
         }
 
         private void btn_GorevliGiris_Click(object sender, EventArgs e)
-        {
+        {   
+            //.....ToList().First().count yapınca first nullsa hata veriyor
             if(entity.SP_gorevliLogin(txt_GorevliTC.Text, txt_GorevliSifre.Text).
-                ToList().First().Count() != 0)
+                ToList().Count!= 0)
             {
                 this.Hide();
                 Form2 newForm = new Form2();
                 newForm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Hatalı Giriş !!!", "HATA", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void txt_UyeGiris_Click(object sender, EventArgs e)
         {
             if (entity.SP_uyeLogin(txt_UyeTC.Text, txt_UyeSifre.Text).
-                ToList().First().Count() != 0)
+                ToList().Count() != 0)
             {
                 this.Hide();
                 Form2 newForm = new Form2();
                 newForm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Hatalı Giriş !!!", "HATA", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

@@ -21,8 +21,7 @@ namespace UretimBilgiProje
         }
     
         public int YAZAR_ID { get; set; }
-        public string YAZAR_Adi { get; set; }
-        public string YAZAR_Soyadi { get; set; }
+        public string YAZAR_AdiSoyadi { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KITAP> KITAP { get; set; }

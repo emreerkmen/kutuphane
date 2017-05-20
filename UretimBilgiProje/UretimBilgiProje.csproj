@@ -81,6 +81,31 @@
     <Compile Include="KUTUPHANE.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="kutuphaneDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kutuphaneDBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kutuphaneDBDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kutuphaneDBDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kutuphaneDBDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kutuphaneDBDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kutuphaneDBDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kutuphaneDBDataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="kutuphaneDBDataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kutuphaneDBDataSet4.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -101,6 +126,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="SP_ISBNileAra_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -111,6 +142,12 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="SP_YazaraGoreAra_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_YazarGetir_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="TUR.cs">
@@ -147,6 +184,61 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="kutuphaneDBDataSet.xsc">
+      <DependentUpon>kutuphaneDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="kutuphaneDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kutuphaneDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kutuphaneDBDataSet.xss">
+      <DependentUpon>kutuphaneDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="kutuphaneDBDataSet1.xsc">
+      <DependentUpon>kutuphaneDBDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="kutuphaneDBDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kutuphaneDBDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kutuphaneDBDataSet1.xss">
+      <DependentUpon>kutuphaneDBDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="kutuphaneDBDataSet2.xsc">
+      <DependentUpon>kutuphaneDBDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="kutuphaneDBDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kutuphaneDBDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kutuphaneDBDataSet2.xss">
+      <DependentUpon>kutuphaneDBDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="kutuphaneDBDataSet3.xsc">
+      <DependentUpon>kutuphaneDBDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="kutuphaneDBDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kutuphaneDBDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kutuphaneDBDataSet3.xss">
+      <DependentUpon>kutuphaneDBDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="kutuphaneDBDataSet4.xsc">
+      <DependentUpon>kutuphaneDBDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="kutuphaneDBDataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kutuphaneDBDataSet4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kutuphaneDBDataSet4.xss">
+      <DependentUpon>kutuphaneDBDataSet4.xsd</DependentUpon>
+    </None>
     <None Include="Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
