@@ -1,0 +1,926 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="kutuphaneDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DIL">
+          <Key>
+            <PropertyRef Name="DIL_ID" />
+          </Key>
+          <Property Name="DIL_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DIL_Adi" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GOREVLI">
+          <Key>
+            <PropertyRef Name="GOREVLI_TC" />
+          </Key>
+          <Property Name="GOREVLI_TC" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="GOREVLI_Sifre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GOREVLI_Adi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GOREVLI_Soyadi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GOREVLI_KutuphaneID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KITAP">
+          <Key>
+            <PropertyRef Name="KITAP_ISBN" />
+          </Key>
+          <Property Name="KITAP_ISBN" Type="nvarchar" MaxLength="13" Nullable="false" />
+          <Property Name="KITAP_Adi" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="KITAP_TurID" Type="int" Nullable="false" />
+          <Property Name="KITAP_YayinciID" Type="int" Nullable="false" />
+          <Property Name="KITAP_Sayfa" Type="int" Nullable="false" />
+          <Property Name="KITAP_DilID" Type="int" Nullable="false" />
+          <Property Name="KITAP_TopSayi" Type="int" Nullable="false" />
+          <Property Name="KITAP_UygunSayi" Type="int" Nullable="false" />
+          <Property Name="KITAP_YazarID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KUTUPHANE">
+          <Key>
+            <PropertyRef Name="KUTUPHANE_ID" />
+          </Key>
+          <Property Name="KUTUPHANE_ID" Type="int" Nullable="false" />
+          <Property Name="KUTUPHANE_Adi" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ODUNC">
+          <Key>
+            <PropertyRef Name="ODUNC_AlmaTarihi" />
+            <PropertyRef Name="ODUNC_VolumeID" />
+            <PropertyRef Name="ODUNC_UyeTC" />
+          </Key>
+          <Property Name="ODUNC_AlmaTarihi" Type="date" Nullable="false" />
+          <Property Name="ODUNC_VolumeID" Type="int" Nullable="false" />
+          <Property Name="ODUNC_UyeTC" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="ODUNC_VerenGorevliTC" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="ODUNC_TeslimAlanGorevliTC" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="ODUNC_TeslimTarihi" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TUR">
+          <Key>
+            <PropertyRef Name="TUR_ID" />
+          </Key>
+          <Property Name="TUR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TUR_Adi" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UYE">
+          <Key>
+            <PropertyRef Name="UYE_TC" />
+          </Key>
+          <Property Name="UYE_TC" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="UYE_Sifre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UYE_Adi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UYE_Soyadi" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VOLUME">
+          <Key>
+            <PropertyRef Name="VOLUME_ID" />
+          </Key>
+          <Property Name="VOLUME_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VOLUME_KitapISBN" Type="nvarchar" MaxLength="13" Nullable="false" />
+          <Property Name="VOLUME_KutuphaneID" Type="int" Nullable="false" />
+          <Property Name="VOLUME_UygunMu" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="YAYINCI">
+          <Key>
+            <PropertyRef Name="YAYINCI_ID" />
+          </Key>
+          <Property Name="YAYINCI_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="YAYINCI_Adi" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="YAZAR">
+          <Key>
+            <PropertyRef Name="YAZAR_ID" />
+          </Key>
+          <Property Name="YAZAR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="YAZAR_Adi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="YAZAR_Soyadi" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_GOREVLI_KUTUPHANE">
+          <End Role="KUTUPHANE" Type="Self.KUTUPHANE" Multiplicity="1" />
+          <End Role="GOREVLI" Type="Self.GOREVLI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KUTUPHANE">
+              <PropertyRef Name="KUTUPHANE_ID" />
+            </Principal>
+            <Dependent Role="GOREVLI">
+              <PropertyRef Name="GOREVLI_KutuphaneID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KITAP_DIL">
+          <End Role="DIL" Type="Self.DIL" Multiplicity="1" />
+          <End Role="KITAP" Type="Self.KITAP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DIL">
+              <PropertyRef Name="DIL_ID" />
+            </Principal>
+            <Dependent Role="KITAP">
+              <PropertyRef Name="KITAP_DilID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KITAP_TUR">
+          <End Role="TUR" Type="Self.TUR" Multiplicity="1" />
+          <End Role="KITAP" Type="Self.KITAP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TUR">
+              <PropertyRef Name="TUR_ID" />
+            </Principal>
+            <Dependent Role="KITAP">
+              <PropertyRef Name="KITAP_TurID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KITAP_YAYINCI">
+          <End Role="YAYINCI" Type="Self.YAYINCI" Multiplicity="1" />
+          <End Role="KITAP" Type="Self.KITAP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YAYINCI">
+              <PropertyRef Name="YAYINCI_ID" />
+            </Principal>
+            <Dependent Role="KITAP">
+              <PropertyRef Name="KITAP_YayinciID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KITAP_YAZAR">
+          <End Role="YAZAR" Type="Self.YAZAR" Multiplicity="1" />
+          <End Role="KITAP" Type="Self.KITAP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YAZAR">
+              <PropertyRef Name="YAZAR_ID" />
+            </Principal>
+            <Dependent Role="KITAP">
+              <PropertyRef Name="KITAP_YazarID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ODUNC_GOREVLI">
+          <End Role="GOREVLI" Type="Self.GOREVLI" Multiplicity="1" />
+          <End Role="ODUNC" Type="Self.ODUNC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GOREVLI">
+              <PropertyRef Name="GOREVLI_TC" />
+            </Principal>
+            <Dependent Role="ODUNC">
+              <PropertyRef Name="ODUNC_TeslimAlanGorevliTC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ODUNC_GOREVLI1">
+          <End Role="GOREVLI" Type="Self.GOREVLI" Multiplicity="1" />
+          <End Role="ODUNC" Type="Self.ODUNC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GOREVLI">
+              <PropertyRef Name="GOREVLI_TC" />
+            </Principal>
+            <Dependent Role="ODUNC">
+              <PropertyRef Name="ODUNC_VerenGorevliTC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ODUNC_UYE">
+          <End Role="UYE" Type="Self.UYE" Multiplicity="1" />
+          <End Role="ODUNC" Type="Self.ODUNC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UYE">
+              <PropertyRef Name="UYE_TC" />
+            </Principal>
+            <Dependent Role="ODUNC">
+              <PropertyRef Name="ODUNC_UyeTC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ODUNC_VOLUME">
+          <End Role="VOLUME" Type="Self.VOLUME" Multiplicity="1" />
+          <End Role="ODUNC" Type="Self.ODUNC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VOLUME">
+              <PropertyRef Name="VOLUME_ID" />
+            </Principal>
+            <Dependent Role="ODUNC">
+              <PropertyRef Name="ODUNC_VolumeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VOLUME_KITAP">
+          <End Role="KITAP" Type="Self.KITAP" Multiplicity="1" />
+          <End Role="VOLUME" Type="Self.VOLUME" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KITAP">
+              <PropertyRef Name="KITAP_ISBN" />
+            </Principal>
+            <Dependent Role="VOLUME">
+              <PropertyRef Name="VOLUME_KitapISBN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VOLUME_KUTUPHANE">
+          <End Role="KUTUPHANE" Type="Self.KUTUPHANE" Multiplicity="1" />
+          <End Role="VOLUME" Type="Self.VOLUME" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KUTUPHANE">
+              <PropertyRef Name="KUTUPHANE_ID" />
+            </Principal>
+            <Dependent Role="VOLUME">
+              <PropertyRef Name="VOLUME_KutuphaneID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="SP_gorevliLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="gorevliTC" Type="varchar" Mode="In" />
+          <Parameter Name="gorevliSifre" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_ISBNileAra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="isbn" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_KitapAdiylaAra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="kitapAdi" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_KitapEkle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="isbn" Type="nvarchar" Mode="In" />
+          <Parameter Name="adi" Type="varchar" Mode="In" />
+          <Parameter Name="turID" Type="int" Mode="In" />
+          <Parameter Name="yayinciID" Type="int" Mode="In" />
+          <Parameter Name="sayfa" Type="int" Mode="In" />
+          <Parameter Name="dilID" Type="int" Mode="In" />
+          <Parameter Name="kacTaneVar" Type="int" Mode="In" />
+          <Parameter Name="uygunSayi" Type="int" Mode="In" />
+          <Parameter Name="yazarID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_TureGoreAra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="turAdi" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_TurGetir" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_uyeLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="uyeTC" Type="varchar" Mode="In" />
+          <Parameter Name="uyeSifre" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_YazaraGoreAra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="yazarAdi" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="kutuphaneDBModelStoreContainer">
+          <EntitySet Name="DIL" EntityType="Self.DIL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GOREVLI" EntityType="Self.GOREVLI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KITAP" EntityType="Self.KITAP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KUTUPHANE" EntityType="Self.KUTUPHANE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ODUNC" EntityType="Self.ODUNC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TUR" EntityType="Self.TUR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UYE" EntityType="Self.UYE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VOLUME" EntityType="Self.VOLUME" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="YAYINCI" EntityType="Self.YAYINCI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="YAZAR" EntityType="Self.YAZAR" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_GOREVLI_KUTUPHANE" Association="Self.FK_GOREVLI_KUTUPHANE">
+            <End Role="KUTUPHANE" EntitySet="KUTUPHANE" />
+            <End Role="GOREVLI" EntitySet="GOREVLI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KITAP_DIL" Association="Self.FK_KITAP_DIL">
+            <End Role="DIL" EntitySet="DIL" />
+            <End Role="KITAP" EntitySet="KITAP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KITAP_TUR" Association="Self.FK_KITAP_TUR">
+            <End Role="TUR" EntitySet="TUR" />
+            <End Role="KITAP" EntitySet="KITAP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KITAP_YAYINCI" Association="Self.FK_KITAP_YAYINCI">
+            <End Role="YAYINCI" EntitySet="YAYINCI" />
+            <End Role="KITAP" EntitySet="KITAP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KITAP_YAZAR" Association="Self.FK_KITAP_YAZAR">
+            <End Role="YAZAR" EntitySet="YAZAR" />
+            <End Role="KITAP" EntitySet="KITAP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ODUNC_GOREVLI" Association="Self.FK_ODUNC_GOREVLI">
+            <End Role="GOREVLI" EntitySet="GOREVLI" />
+            <End Role="ODUNC" EntitySet="ODUNC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ODUNC_GOREVLI1" Association="Self.FK_ODUNC_GOREVLI1">
+            <End Role="GOREVLI" EntitySet="GOREVLI" />
+            <End Role="ODUNC" EntitySet="ODUNC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ODUNC_UYE" Association="Self.FK_ODUNC_UYE">
+            <End Role="UYE" EntitySet="UYE" />
+            <End Role="ODUNC" EntitySet="ODUNC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ODUNC_VOLUME" Association="Self.FK_ODUNC_VOLUME">
+            <End Role="VOLUME" EntitySet="VOLUME" />
+            <End Role="ODUNC" EntitySet="ODUNC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VOLUME_KITAP" Association="Self.FK_VOLUME_KITAP">
+            <End Role="KITAP" EntitySet="KITAP" />
+            <End Role="VOLUME" EntitySet="VOLUME" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VOLUME_KUTUPHANE" Association="Self.FK_VOLUME_KUTUPHANE">
+            <End Role="KUTUPHANE" EntitySet="KUTUPHANE" />
+            <End Role="VOLUME" EntitySet="VOLUME" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="kutuphaneDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DIL">
+          <Key>
+            <PropertyRef Name="DIL_ID" />
+          </Key>
+          <Property Name="DIL_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DIL_Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="KITAP" Relationship="Self.FK_KITAP_DIL" FromRole="DIL" ToRole="KITAP" />
+        </EntityType>
+        <EntityType Name="GOREVLI">
+          <Key>
+            <PropertyRef Name="GOREVLI_TC" />
+          </Key>
+          <Property Name="GOREVLI_TC" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GOREVLI_Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GOREVLI_Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GOREVLI_Soyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GOREVLI_KutuphaneID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="KUTUPHANE" Relationship="Self.FK_GOREVLI_KUTUPHANE" FromRole="GOREVLI" ToRole="KUTUPHANE" />
+          <NavigationProperty Name="ODUNC" Relationship="Self.FK_ODUNC_GOREVLI" FromRole="GOREVLI" ToRole="ODUNC" />
+          <NavigationProperty Name="ODUNC1" Relationship="Self.FK_ODUNC_GOREVLI1" FromRole="GOREVLI" ToRole="ODUNC" />
+        </EntityType>
+        <EntityType Name="KITAP">
+          <Key>
+            <PropertyRef Name="KITAP_ISBN" />
+          </Key>
+          <Property Name="KITAP_ISBN" Type="String" MaxLength="13" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="KITAP_Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="KITAP_TurID" Type="Int32" Nullable="false" />
+          <Property Name="KITAP_YayinciID" Type="Int32" Nullable="false" />
+          <Property Name="KITAP_Sayfa" Type="Int32" Nullable="false" />
+          <Property Name="KITAP_DilID" Type="Int32" Nullable="false" />
+          <Property Name="KITAP_TopSayi" Type="Int32" Nullable="false" />
+          <Property Name="KITAP_UygunSayi" Type="Int32" Nullable="false" />
+          <Property Name="KITAP_YazarID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DIL" Relationship="Self.FK_KITAP_DIL" FromRole="KITAP" ToRole="DIL" />
+          <NavigationProperty Name="TUR" Relationship="Self.FK_KITAP_TUR" FromRole="KITAP" ToRole="TUR" />
+          <NavigationProperty Name="YAYINCI" Relationship="Self.FK_KITAP_YAYINCI" FromRole="KITAP" ToRole="YAYINCI" />
+          <NavigationProperty Name="YAZAR" Relationship="Self.FK_KITAP_YAZAR" FromRole="KITAP" ToRole="YAZAR" />
+          <NavigationProperty Name="VOLUME" Relationship="Self.FK_VOLUME_KITAP" FromRole="KITAP" ToRole="VOLUME" />
+        </EntityType>
+        <EntityType Name="KUTUPHANE">
+          <Key>
+            <PropertyRef Name="KUTUPHANE_ID" />
+          </Key>
+          <Property Name="KUTUPHANE_ID" Type="Int32" Nullable="false" />
+          <Property Name="KUTUPHANE_Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="GOREVLI" Relationship="Self.FK_GOREVLI_KUTUPHANE" FromRole="KUTUPHANE" ToRole="GOREVLI" />
+          <NavigationProperty Name="VOLUME" Relationship="Self.FK_VOLUME_KUTUPHANE" FromRole="KUTUPHANE" ToRole="VOLUME" />
+        </EntityType>
+        <EntityType Name="ODUNC">
+          <Key>
+            <PropertyRef Name="ODUNC_AlmaTarihi" />
+            <PropertyRef Name="ODUNC_VolumeID" />
+            <PropertyRef Name="ODUNC_UyeTC" />
+          </Key>
+          <Property Name="ODUNC_AlmaTarihi" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ODUNC_VolumeID" Type="Int32" Nullable="false" />
+          <Property Name="ODUNC_UyeTC" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ODUNC_VerenGorevliTC" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ODUNC_TeslimAlanGorevliTC" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ODUNC_TeslimTarihi" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="GOREVLI" Relationship="Self.FK_ODUNC_GOREVLI" FromRole="ODUNC" ToRole="GOREVLI" />
+          <NavigationProperty Name="GOREVLI1" Relationship="Self.FK_ODUNC_GOREVLI1" FromRole="ODUNC" ToRole="GOREVLI" />
+          <NavigationProperty Name="UYE" Relationship="Self.FK_ODUNC_UYE" FromRole="ODUNC" ToRole="UYE" />
+          <NavigationProperty Name="VOLUME" Relationship="Self.FK_ODUNC_VOLUME" FromRole="ODUNC" ToRole="VOLUME" />
+        </EntityType>
+        <EntityType Name="TUR">
+          <Key>
+            <PropertyRef Name="TUR_ID" />
+          </Key>
+          <Property Name="TUR_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TUR_Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="KITAP" Relationship="Self.FK_KITAP_TUR" FromRole="TUR" ToRole="KITAP" />
+        </EntityType>
+        <EntityType Name="UYE">
+          <Key>
+            <PropertyRef Name="UYE_TC" />
+          </Key>
+          <Property Name="UYE_TC" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UYE_Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UYE_Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UYE_Soyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ODUNC" Relationship="Self.FK_ODUNC_UYE" FromRole="UYE" ToRole="ODUNC" />
+        </EntityType>
+        <EntityType Name="VOLUME">
+          <Key>
+            <PropertyRef Name="VOLUME_ID" />
+          </Key>
+          <Property Name="VOLUME_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VOLUME_KitapISBN" Type="String" MaxLength="13" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="VOLUME_KutuphaneID" Type="Int32" Nullable="false" />
+          <Property Name="VOLUME_UygunMu" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="KITAP" Relationship="Self.FK_VOLUME_KITAP" FromRole="VOLUME" ToRole="KITAP" />
+          <NavigationProperty Name="KUTUPHANE" Relationship="Self.FK_VOLUME_KUTUPHANE" FromRole="VOLUME" ToRole="KUTUPHANE" />
+          <NavigationProperty Name="ODUNC" Relationship="Self.FK_ODUNC_VOLUME" FromRole="VOLUME" ToRole="ODUNC" />
+        </EntityType>
+        <EntityType Name="YAYINCI">
+          <Key>
+            <PropertyRef Name="YAYINCI_ID" />
+          </Key>
+          <Property Name="YAYINCI_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="YAYINCI_Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="KITAP" Relationship="Self.FK_KITAP_YAYINCI" FromRole="YAYINCI" ToRole="KITAP" />
+        </EntityType>
+        <EntityType Name="YAZAR">
+          <Key>
+            <PropertyRef Name="YAZAR_ID" />
+          </Key>
+          <Property Name="YAZAR_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="YAZAR_Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="YAZAR_Soyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="KITAP" Relationship="Self.FK_KITAP_YAZAR" FromRole="YAZAR" ToRole="KITAP" />
+        </EntityType>
+        <Association Name="FK_KITAP_DIL">
+          <End Role="DIL" Type="Self.DIL" Multiplicity="1" />
+          <End Role="KITAP" Type="Self.KITAP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DIL">
+              <PropertyRef Name="DIL_ID" />
+            </Principal>
+            <Dependent Role="KITAP">
+              <PropertyRef Name="KITAP_DilID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GOREVLI_KUTUPHANE">
+          <End Role="KUTUPHANE" Type="Self.KUTUPHANE" Multiplicity="1" />
+          <End Role="GOREVLI" Type="Self.GOREVLI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KUTUPHANE">
+              <PropertyRef Name="KUTUPHANE_ID" />
+            </Principal>
+            <Dependent Role="GOREVLI">
+              <PropertyRef Name="GOREVLI_KutuphaneID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ODUNC_GOREVLI">
+          <End Role="GOREVLI" Type="Self.GOREVLI" Multiplicity="1" />
+          <End Role="ODUNC" Type="Self.ODUNC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GOREVLI">
+              <PropertyRef Name="GOREVLI_TC" />
+            </Principal>
+            <Dependent Role="ODUNC">
+              <PropertyRef Name="ODUNC_TeslimAlanGorevliTC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ODUNC_GOREVLI1">
+          <End Role="GOREVLI" Type="Self.GOREVLI" Multiplicity="1" />
+          <End Role="ODUNC" Type="Self.ODUNC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GOREVLI">
+              <PropertyRef Name="GOREVLI_TC" />
+            </Principal>
+            <Dependent Role="ODUNC">
+              <PropertyRef Name="ODUNC_VerenGorevliTC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KITAP_TUR">
+          <End Role="TUR" Type="Self.TUR" Multiplicity="1" />
+          <End Role="KITAP" Type="Self.KITAP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TUR">
+              <PropertyRef Name="TUR_ID" />
+            </Principal>
+            <Dependent Role="KITAP">
+              <PropertyRef Name="KITAP_TurID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KITAP_YAYINCI">
+          <End Role="YAYINCI" Type="Self.YAYINCI" Multiplicity="1" />
+          <End Role="KITAP" Type="Self.KITAP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YAYINCI">
+              <PropertyRef Name="YAYINCI_ID" />
+            </Principal>
+            <Dependent Role="KITAP">
+              <PropertyRef Name="KITAP_YayinciID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KITAP_YAZAR">
+          <End Role="YAZAR" Type="Self.YAZAR" Multiplicity="1" />
+          <End Role="KITAP" Type="Self.KITAP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YAZAR">
+              <PropertyRef Name="YAZAR_ID" />
+            </Principal>
+            <Dependent Role="KITAP">
+              <PropertyRef Name="KITAP_YazarID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VOLUME_KITAP">
+          <End Role="KITAP" Type="Self.KITAP" Multiplicity="1" />
+          <End Role="VOLUME" Type="Self.VOLUME" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KITAP">
+              <PropertyRef Name="KITAP_ISBN" />
+            </Principal>
+            <Dependent Role="VOLUME">
+              <PropertyRef Name="VOLUME_KitapISBN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VOLUME_KUTUPHANE">
+          <End Role="KUTUPHANE" Type="Self.KUTUPHANE" Multiplicity="1" />
+          <End Role="VOLUME" Type="Self.VOLUME" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KUTUPHANE">
+              <PropertyRef Name="KUTUPHANE_ID" />
+            </Principal>
+            <Dependent Role="VOLUME">
+              <PropertyRef Name="VOLUME_KutuphaneID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ODUNC_UYE">
+          <End Role="UYE" Type="Self.UYE" Multiplicity="1" />
+          <End Role="ODUNC" Type="Self.ODUNC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UYE">
+              <PropertyRef Name="UYE_TC" />
+            </Principal>
+            <Dependent Role="ODUNC">
+              <PropertyRef Name="ODUNC_UyeTC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ODUNC_VOLUME">
+          <End Role="VOLUME" Type="Self.VOLUME" Multiplicity="1" />
+          <End Role="ODUNC" Type="Self.ODUNC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VOLUME">
+              <PropertyRef Name="VOLUME_ID" />
+            </Principal>
+            <Dependent Role="ODUNC">
+              <PropertyRef Name="ODUNC_VolumeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="kutuphaneDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DIL" EntityType="Self.DIL" />
+          <EntitySet Name="GOREVLI" EntityType="Self.GOREVLI" />
+          <EntitySet Name="KITAP" EntityType="Self.KITAP" />
+          <EntitySet Name="KUTUPHANE" EntityType="Self.KUTUPHANE" />
+          <EntitySet Name="ODUNC" EntityType="Self.ODUNC" />
+          <EntitySet Name="TUR" EntityType="Self.TUR" />
+          <EntitySet Name="UYE" EntityType="Self.UYE" />
+          <EntitySet Name="VOLUME" EntityType="Self.VOLUME" />
+          <EntitySet Name="YAYINCI" EntityType="Self.YAYINCI" />
+          <EntitySet Name="YAZAR" EntityType="Self.YAZAR" />
+          <AssociationSet Name="FK_KITAP_DIL" Association="Self.FK_KITAP_DIL">
+            <End Role="DIL" EntitySet="DIL" />
+            <End Role="KITAP" EntitySet="KITAP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GOREVLI_KUTUPHANE" Association="Self.FK_GOREVLI_KUTUPHANE">
+            <End Role="KUTUPHANE" EntitySet="KUTUPHANE" />
+            <End Role="GOREVLI" EntitySet="GOREVLI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ODUNC_GOREVLI" Association="Self.FK_ODUNC_GOREVLI">
+            <End Role="GOREVLI" EntitySet="GOREVLI" />
+            <End Role="ODUNC" EntitySet="ODUNC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ODUNC_GOREVLI1" Association="Self.FK_ODUNC_GOREVLI1">
+            <End Role="GOREVLI" EntitySet="GOREVLI" />
+            <End Role="ODUNC" EntitySet="ODUNC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KITAP_TUR" Association="Self.FK_KITAP_TUR">
+            <End Role="TUR" EntitySet="TUR" />
+            <End Role="KITAP" EntitySet="KITAP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KITAP_YAYINCI" Association="Self.FK_KITAP_YAYINCI">
+            <End Role="YAYINCI" EntitySet="YAYINCI" />
+            <End Role="KITAP" EntitySet="KITAP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KITAP_YAZAR" Association="Self.FK_KITAP_YAZAR">
+            <End Role="YAZAR" EntitySet="YAZAR" />
+            <End Role="KITAP" EntitySet="KITAP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VOLUME_KITAP" Association="Self.FK_VOLUME_KITAP">
+            <End Role="KITAP" EntitySet="KITAP" />
+            <End Role="VOLUME" EntitySet="VOLUME" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VOLUME_KUTUPHANE" Association="Self.FK_VOLUME_KUTUPHANE">
+            <End Role="KUTUPHANE" EntitySet="KUTUPHANE" />
+            <End Role="VOLUME" EntitySet="VOLUME" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ODUNC_UYE" Association="Self.FK_ODUNC_UYE">
+            <End Role="UYE" EntitySet="UYE" />
+            <End Role="ODUNC" EntitySet="ODUNC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ODUNC_VOLUME" Association="Self.FK_ODUNC_VOLUME">
+            <End Role="VOLUME" EntitySet="VOLUME" />
+            <End Role="ODUNC" EntitySet="ODUNC" />
+          </AssociationSet>
+          <FunctionImport Name="SP_gorevliLogin" ReturnType="Collection(String)">
+            <Parameter Name="gorevliTC" Mode="In" Type="String" />
+            <Parameter Name="gorevliSifre" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_uyeLogin" ReturnType="Collection(String)">
+            <Parameter Name="uyeTC" Mode="In" Type="String" />
+            <Parameter Name="uyeSifre" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_ISBNileAra" ReturnType="Collection(kutuphaneDBModel.SP_ISBNileAra_Result)">
+          <Parameter Name="isbn" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_KitapAdiylaAra" ReturnType="Collection(kutuphaneDBModel.SP_KitapAdiylaAra_Result)">
+          <Parameter Name="kitapAdi" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_KitapEkle">
+            <Parameter Name="isbn" Mode="In" Type="String" />
+            <Parameter Name="adi" Mode="In" Type="String" />
+            <Parameter Name="turID" Mode="In" Type="Int32" />
+            <Parameter Name="yayinciID" Mode="In" Type="Int32" />
+            <Parameter Name="sayfa" Mode="In" Type="Int32" />
+            <Parameter Name="dilID" Mode="In" Type="Int32" />
+            <Parameter Name="kacTaneVar" Mode="In" Type="Int32" />
+            <Parameter Name="uygunSayi" Mode="In" Type="Int32" />
+            <Parameter Name="yazarID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_YazaraGoreAra" ReturnType="Collection(kutuphaneDBModel.SP_YazaraGoreAra_Result)">
+          <Parameter Name="yazarAdi" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_TurGetir" ReturnType="Collection(String)" />
+          <FunctionImport Name="SP_TureGoreAra" ReturnType="Collection(kutuphaneDBModel.SP_TureGoreAra_Result)">
+            <Parameter Name="turAdi" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="SP_ISBNileAra_Result">
+          <Property Type="String" Name="KITAP_ISBN" Nullable="false" MaxLength="13" />
+          <Property Type="String" Name="KITAP_Adi" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="KITAP_TurID" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_YayinciID" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_Sayfa" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_DilID" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_TopSayi" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_UygunSayi" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_YazarID" Nullable="false" />
+          <Property Type="String" Name="DIL_Adi" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TUR_Adi" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="YAYINCI_Adi" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="YAZAR_Adi" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SP_KitapAdiylaAra_Result">
+          <Property Type="String" Name="KITAP_ISBN" Nullable="false" MaxLength="13" />
+          <Property Type="String" Name="KITAP_Adi" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="KITAP_TurID" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_YayinciID" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_Sayfa" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_DilID" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_TopSayi" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_UygunSayi" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_YazarID" Nullable="false" />
+          <Property Type="String" Name="DIL_Adi" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TUR_Adi" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="YAYINCI_Adi" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="YAZAR_Adi" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SP_YazaraGoreAra_Result">
+          <Property Type="String" Name="KITAP_ISBN" Nullable="false" MaxLength="13" />
+          <Property Type="String" Name="KITAP_Adi" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="KITAP_TurID" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_YayinciID" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_Sayfa" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_DilID" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_TopSayi" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_UygunSayi" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_YazarID" Nullable="false" />
+          <Property Type="String" Name="DIL_Adi" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TUR_Adi" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="YAYINCI_Adi" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="YAZAR_Adi" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SP_TureGoreAra_Result">
+          <Property Type="String" Name="KITAP_ISBN" Nullable="false" MaxLength="13" />
+          <Property Type="String" Name="KITAP_Adi" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="KITAP_TurID" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_YayinciID" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_Sayfa" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_DilID" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_TopSayi" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_UygunSayi" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_YazarID" Nullable="false" />
+          <Property Type="String" Name="DIL_Adi" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TUR_Adi" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="YAYINCI_Adi" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="YAZAR_Adi" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="YAZAR_Soyadi" Nullable="false" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="kutuphaneDBModelStoreContainer" CdmEntityContainer="kutuphaneDBEntities">
+          <EntitySetMapping Name="DIL">
+            <EntityTypeMapping TypeName="kutuphaneDBModel.DIL">
+              <MappingFragment StoreEntitySet="DIL">
+                <ScalarProperty Name="DIL_ID" ColumnName="DIL_ID" />
+                <ScalarProperty Name="DIL_Adi" ColumnName="DIL_Adi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GOREVLI">
+            <EntityTypeMapping TypeName="kutuphaneDBModel.GOREVLI">
+              <MappingFragment StoreEntitySet="GOREVLI">
+                <ScalarProperty Name="GOREVLI_TC" ColumnName="GOREVLI_TC" />
+                <ScalarProperty Name="GOREVLI_Sifre" ColumnName="GOREVLI_Sifre" />
+                <ScalarProperty Name="GOREVLI_Adi" ColumnName="GOREVLI_Adi" />
+                <ScalarProperty Name="GOREVLI_Soyadi" ColumnName="GOREVLI_Soyadi" />
+                <ScalarProperty Name="GOREVLI_KutuphaneID" ColumnName="GOREVLI_KutuphaneID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KITAP">
+            <EntityTypeMapping TypeName="kutuphaneDBModel.KITAP">
+              <MappingFragment StoreEntitySet="KITAP">
+                <ScalarProperty Name="KITAP_ISBN" ColumnName="KITAP_ISBN" />
+                <ScalarProperty Name="KITAP_Adi" ColumnName="KITAP_Adi" />
+                <ScalarProperty Name="KITAP_TurID" ColumnName="KITAP_TurID" />
+                <ScalarProperty Name="KITAP_YayinciID" ColumnName="KITAP_YayinciID" />
+                <ScalarProperty Name="KITAP_Sayfa" ColumnName="KITAP_Sayfa" />
+                <ScalarProperty Name="KITAP_DilID" ColumnName="KITAP_DilID" />
+                <ScalarProperty Name="KITAP_TopSayi" ColumnName="KITAP_TopSayi" />
+                <ScalarProperty Name="KITAP_UygunSayi" ColumnName="KITAP_UygunSayi" />
+                <ScalarProperty Name="KITAP_YazarID" ColumnName="KITAP_YazarID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KUTUPHANE">
+            <EntityTypeMapping TypeName="kutuphaneDBModel.KUTUPHANE">
+              <MappingFragment StoreEntitySet="KUTUPHANE">
+                <ScalarProperty Name="KUTUPHANE_ID" ColumnName="KUTUPHANE_ID" />
+                <ScalarProperty Name="KUTUPHANE_Adi" ColumnName="KUTUPHANE_Adi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ODUNC">
+            <EntityTypeMapping TypeName="kutuphaneDBModel.ODUNC">
+              <MappingFragment StoreEntitySet="ODUNC">
+                <ScalarProperty Name="ODUNC_AlmaTarihi" ColumnName="ODUNC_AlmaTarihi" />
+                <ScalarProperty Name="ODUNC_VolumeID" ColumnName="ODUNC_VolumeID" />
+                <ScalarProperty Name="ODUNC_UyeTC" ColumnName="ODUNC_UyeTC" />
+                <ScalarProperty Name="ODUNC_VerenGorevliTC" ColumnName="ODUNC_VerenGorevliTC" />
+                <ScalarProperty Name="ODUNC_TeslimAlanGorevliTC" ColumnName="ODUNC_TeslimAlanGorevliTC" />
+                <ScalarProperty Name="ODUNC_TeslimTarihi" ColumnName="ODUNC_TeslimTarihi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TUR">
+            <EntityTypeMapping TypeName="kutuphaneDBModel.TUR">
+              <MappingFragment StoreEntitySet="TUR">
+                <ScalarProperty Name="TUR_ID" ColumnName="TUR_ID" />
+                <ScalarProperty Name="TUR_Adi" ColumnName="TUR_Adi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UYE">
+            <EntityTypeMapping TypeName="kutuphaneDBModel.UYE">
+              <MappingFragment StoreEntitySet="UYE">
+                <ScalarProperty Name="UYE_TC" ColumnName="UYE_TC" />
+                <ScalarProperty Name="UYE_Sifre" ColumnName="UYE_Sifre" />
+                <ScalarProperty Name="UYE_Adi" ColumnName="UYE_Adi" />
+                <ScalarProperty Name="UYE_Soyadi" ColumnName="UYE_Soyadi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VOLUME">
+            <EntityTypeMapping TypeName="kutuphaneDBModel.VOLUME">
+              <MappingFragment StoreEntitySet="VOLUME">
+                <ScalarProperty Name="VOLUME_ID" ColumnName="VOLUME_ID" />
+                <ScalarProperty Name="VOLUME_KitapISBN" ColumnName="VOLUME_KitapISBN" />
+                <ScalarProperty Name="VOLUME_KutuphaneID" ColumnName="VOLUME_KutuphaneID" />
+                <ScalarProperty Name="VOLUME_UygunMu" ColumnName="VOLUME_UygunMu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="YAYINCI">
+            <EntityTypeMapping TypeName="kutuphaneDBModel.YAYINCI">
+              <MappingFragment StoreEntitySet="YAYINCI">
+                <ScalarProperty Name="YAYINCI_ID" ColumnName="YAYINCI_ID" />
+                <ScalarProperty Name="YAYINCI_Adi" ColumnName="YAYINCI_Adi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="YAZAR">
+            <EntityTypeMapping TypeName="kutuphaneDBModel.YAZAR">
+              <MappingFragment StoreEntitySet="YAZAR">
+                <ScalarProperty Name="YAZAR_ID" ColumnName="YAZAR_ID" />
+                <ScalarProperty Name="YAZAR_Adi" ColumnName="YAZAR_Adi" />
+                <ScalarProperty Name="YAZAR_Soyadi" ColumnName="YAZAR_Soyadi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_gorevliLogin" FunctionName="kutuphaneDBModel.Store.SP_gorevliLogin" />
+          <FunctionImportMapping FunctionImportName="SP_uyeLogin" FunctionName="kutuphaneDBModel.Store.SP_uyeLogin" />
+          <FunctionImportMapping FunctionImportName="SP_ISBNileAra" FunctionName="kutuphaneDBModel.Store.SP_ISBNileAra">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="kutuphaneDBModel.SP_ISBNileAra_Result">
+                <ScalarProperty Name="KITAP_ISBN" ColumnName="KITAP_ISBN" />
+                <ScalarProperty Name="KITAP_Adi" ColumnName="KITAP_Adi" />
+                <ScalarProperty Name="KITAP_TurID" ColumnName="KITAP_TurID" />
+                <ScalarProperty Name="KITAP_YayinciID" ColumnName="KITAP_YayinciID" />
+                <ScalarProperty Name="KITAP_Sayfa" ColumnName="KITAP_Sayfa" />
+                <ScalarProperty Name="KITAP_DilID" ColumnName="KITAP_DilID" />
+                <ScalarProperty Name="KITAP_TopSayi" ColumnName="KITAP_TopSayi" />
+                <ScalarProperty Name="KITAP_UygunSayi" ColumnName="KITAP_UygunSayi" />
+                <ScalarProperty Name="KITAP_YazarID" ColumnName="KITAP_YazarID" />
+                <ScalarProperty Name="DIL_Adi" ColumnName="DIL_Adi" />
+                <ScalarProperty Name="TUR_Adi" ColumnName="TUR_Adi" />
+                <ScalarProperty Name="YAYINCI_Adi" ColumnName="YAYINCI_Adi" />
+                <ScalarProperty Name="YAZAR_Adi" ColumnName="YAZAR_Adi" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_KitapAdiylaAra" FunctionName="kutuphaneDBModel.Store.SP_KitapAdiylaAra">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="kutuphaneDBModel.SP_KitapAdiylaAra_Result">
+                <ScalarProperty Name="KITAP_ISBN" ColumnName="KITAP_ISBN" />
+                <ScalarProperty Name="KITAP_Adi" ColumnName="KITAP_Adi" />
+                <ScalarProperty Name="KITAP_TurID" ColumnName="KITAP_TurID" />
+                <ScalarProperty Name="KITAP_YayinciID" ColumnName="KITAP_YayinciID" />
+                <ScalarProperty Name="KITAP_Sayfa" ColumnName="KITAP_Sayfa" />
+                <ScalarProperty Name="KITAP_DilID" ColumnName="KITAP_DilID" />
+                <ScalarProperty Name="KITAP_TopSayi" ColumnName="KITAP_TopSayi" />
+                <ScalarProperty Name="KITAP_UygunSayi" ColumnName="KITAP_UygunSayi" />
+                <ScalarProperty Name="KITAP_YazarID" ColumnName="KITAP_YazarID" />
+                <ScalarProperty Name="DIL_Adi" ColumnName="DIL_Adi" />
+                <ScalarProperty Name="TUR_Adi" ColumnName="TUR_Adi" />
+                <ScalarProperty Name="YAYINCI_Adi" ColumnName="YAYINCI_Adi" />
+                <ScalarProperty Name="YAZAR_Adi" ColumnName="YAZAR_Adi" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_KitapEkle" FunctionName="kutuphaneDBModel.Store.SP_KitapEkle" />
+          <FunctionImportMapping FunctionImportName="SP_YazaraGoreAra" FunctionName="kutuphaneDBModel.Store.SP_YazaraGoreAra">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="kutuphaneDBModel.SP_YazaraGoreAra_Result">
+                <ScalarProperty Name="KITAP_ISBN" ColumnName="KITAP_ISBN" />
+                <ScalarProperty Name="KITAP_Adi" ColumnName="KITAP_Adi" />
+                <ScalarProperty Name="KITAP_TurID" ColumnName="KITAP_TurID" />
+                <ScalarProperty Name="KITAP_YayinciID" ColumnName="KITAP_YayinciID" />
+                <ScalarProperty Name="KITAP_Sayfa" ColumnName="KITAP_Sayfa" />
+                <ScalarProperty Name="KITAP_DilID" ColumnName="KITAP_DilID" />
+                <ScalarProperty Name="KITAP_TopSayi" ColumnName="KITAP_TopSayi" />
+                <ScalarProperty Name="KITAP_UygunSayi" ColumnName="KITAP_UygunSayi" />
+                <ScalarProperty Name="KITAP_YazarID" ColumnName="KITAP_YazarID" />
+                <ScalarProperty Name="DIL_Adi" ColumnName="DIL_Adi" />
+                <ScalarProperty Name="TUR_Adi" ColumnName="TUR_Adi" />
+                <ScalarProperty Name="YAYINCI_Adi" ColumnName="YAYINCI_Adi" />
+                <ScalarProperty Name="YAZAR_Adi" ColumnName="YAZAR_Adi" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_TurGetir" FunctionName="kutuphaneDBModel.Store.SP_TurGetir" />
+          <FunctionImportMapping FunctionImportName="SP_TureGoreAra" FunctionName="kutuphaneDBModel.Store.SP_TureGoreAra">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="kutuphaneDBModel.SP_TureGoreAra_Result">
+                <ScalarProperty Name="KITAP_ISBN" ColumnName="KITAP_ISBN" />
+                <ScalarProperty Name="KITAP_Adi" ColumnName="KITAP_Adi" />
+                <ScalarProperty Name="KITAP_TurID" ColumnName="KITAP_TurID" />
+                <ScalarProperty Name="KITAP_YayinciID" ColumnName="KITAP_YayinciID" />
+                <ScalarProperty Name="KITAP_Sayfa" ColumnName="KITAP_Sayfa" />
+                <ScalarProperty Name="KITAP_DilID" ColumnName="KITAP_DilID" />
+                <ScalarProperty Name="KITAP_TopSayi" ColumnName="KITAP_TopSayi" />
+                <ScalarProperty Name="KITAP_UygunSayi" ColumnName="KITAP_UygunSayi" />
+                <ScalarProperty Name="KITAP_YazarID" ColumnName="KITAP_YazarID" />
+                <ScalarProperty Name="DIL_Adi" ColumnName="DIL_Adi" />
+                <ScalarProperty Name="TUR_Adi" ColumnName="TUR_Adi" />
+                <ScalarProperty Name="YAYINCI_Adi" ColumnName="YAYINCI_Adi" />
+                <ScalarProperty Name="YAZAR_Adi" ColumnName="YAZAR_Adi" />
+                <ScalarProperty Name="YAZAR_Soyadi" ColumnName="YAZAR_Soyadi" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
