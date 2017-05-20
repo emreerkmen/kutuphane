@@ -65,24 +65,6 @@ namespace UretimBilgiProje
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_uyeLogin", uyeTCParameter, uyeSifreParameter);
         }
     
-        public virtual ObjectResult<SP_ISBNileAra_Result> SP_ISBNileAra(string isbn)
-        {
-            var isbnParameter = isbn != null ?
-                new ObjectParameter("isbn", isbn) :
-                new ObjectParameter("isbn", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_ISBNileAra_Result>("SP_ISBNileAra", isbnParameter);
-        }
-    
-        public virtual ObjectResult<SP_KitapAdiylaAra_Result> SP_KitapAdiylaAra(string kitapAdi)
-        {
-            var kitapAdiParameter = kitapAdi != null ?
-                new ObjectParameter("kitapAdi", kitapAdi) :
-                new ObjectParameter("kitapAdi", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_KitapAdiylaAra_Result>("SP_KitapAdiylaAra", kitapAdiParameter);
-        }
-    
         public virtual int SP_KitapEkle(string isbn, string adi, Nullable<int> turID, Nullable<int> yayinciID, Nullable<int> sayfa, Nullable<int> dilID, Nullable<int> kacTaneVar, Nullable<int> uygunSayi, Nullable<int> yazarID)
         {
             var isbnParameter = isbn != null ?
@@ -124,27 +106,9 @@ namespace UretimBilgiProje
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_KitapEkle", isbnParameter, adiParameter, turIDParameter, yayinciIDParameter, sayfaParameter, dilIDParameter, kacTaneVarParameter, uygunSayiParameter, yazarIDParameter);
         }
     
-        public virtual ObjectResult<SP_YazaraGoreAra_Result> SP_YazaraGoreAra(string yazarAdi)
-        {
-            var yazarAdiParameter = yazarAdi != null ?
-                new ObjectParameter("yazarAdi", yazarAdi) :
-                new ObjectParameter("yazarAdi", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_YazaraGoreAra_Result>("SP_YazaraGoreAra", yazarAdiParameter);
-        }
-    
         public virtual ObjectResult<string> SP_TurGetir()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_TurGetir");
-        }
-    
-        public virtual ObjectResult<SP_TureGoreAra_Result> SP_TureGoreAra(string turAdi)
-        {
-            var turAdiParameter = turAdi != null ?
-                new ObjectParameter("turAdi", turAdi) :
-                new ObjectParameter("turAdi", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_TureGoreAra_Result>("SP_TureGoreAra", turAdiParameter);
         }
     
         public virtual ObjectResult<SP_YazarGetir_Result> SP_YazarGetir()
@@ -253,6 +217,52 @@ namespace UretimBilgiProje
         public virtual int sp_upgraddiagrams()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
+        }
+    
+        public virtual ObjectResult<SP_DilGetir_Result> SP_DilGetir()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_DilGetir_Result>("SP_DilGetir");
+        }
+    
+        public virtual ObjectResult<SP_YayinciGetir_Result> SP_YayinciGetir()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_YayinciGetir_Result>("SP_YayinciGetir");
+        }
+    
+        public virtual ObjectResult<SP_TureGoreAra_Result> SP_TureGoreAra(string turAdi)
+        {
+            var turAdiParameter = turAdi != null ?
+                new ObjectParameter("turAdi", turAdi) :
+                new ObjectParameter("turAdi", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_TureGoreAra_Result>("SP_TureGoreAra", turAdiParameter);
+        }
+    
+        public virtual ObjectResult<SP_KitapAdiylaAra_Result> SP_KitapAdiylaAra(string kitapAdi)
+        {
+            var kitapAdiParameter = kitapAdi != null ?
+                new ObjectParameter("kitapAdi", kitapAdi) :
+                new ObjectParameter("kitapAdi", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_KitapAdiylaAra_Result>("SP_KitapAdiylaAra", kitapAdiParameter);
+        }
+    
+        public virtual ObjectResult<SP_ISBNileAra_Result> SP_ISBNileAra(string isbn)
+        {
+            var isbnParameter = isbn != null ?
+                new ObjectParameter("isbn", isbn) :
+                new ObjectParameter("isbn", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_ISBNileAra_Result>("SP_ISBNileAra", isbnParameter);
+        }
+    
+        public virtual ObjectResult<SP_YazaraGoreAra_Result> SP_YazaraGoreAra(string yazarAdi)
+        {
+            var yazarAdiParameter = yazarAdi != null ?
+                new ObjectParameter("yazarAdi", yazarAdi) :
+                new ObjectParameter("yazarAdi", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_YazaraGoreAra_Result>("SP_YazaraGoreAra", yazarAdiParameter);
         }
     }
 }

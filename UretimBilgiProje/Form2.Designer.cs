@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmb_Tur = new System.Windows.Forms.ComboBox();
             this.btn_KitapAra = new System.Windows.Forms.Button();
@@ -53,50 +52,51 @@
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.btn_KitapEkle = new System.Windows.Forms.Button();
-            this.txt_KitapISBN = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txt_KitapAdi = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txt_SayfaSayisi = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txt_KitapSayisi = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.cmbox_Tur = new System.Windows.Forms.ComboBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.cmbox_Yayinci = new System.Windows.Forms.ComboBox();
+            this.sPYayinciGetirBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.kutuphaneDBDataSet4 = new UretimBilgiProje.kutuphaneDBDataSet4();
+            this.cmbox_Dil = new System.Windows.Forms.ComboBox();
+            this.sPDilGetirBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.kutuphaneDBDataSet3 = new UretimBilgiProje.kutuphaneDBDataSet3();
             this.cmbox_Yazar = new System.Windows.Forms.ComboBox();
-            this.kutuphaneDBDataSet = new UretimBilgiProje.kutuphaneDBDataSet();
+            this.sPYazarGetirBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.kutuphaneDBDataSet2 = new UretimBilgiProje.kutuphaneDBDataSet2();
+            this.cmbox_Tur = new System.Windows.Forms.ComboBox();
             this.sPTurGetirBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.kutuphaneDBDataSet = new UretimBilgiProje.kutuphaneDBDataSet();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txt_KitapSayisi = new System.Windows.Forms.TextBox();
+            this.txt_SayfaSayisi = new System.Windows.Forms.TextBox();
+            this.txt_KitapAdi = new System.Windows.Forms.TextBox();
+            this.txt_KitapISBN = new System.Windows.Forms.TextBox();
+            this.btn_KitapEkle = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.sP_TurGetirTableAdapter = new UretimBilgiProje.kutuphaneDBDataSetTableAdapters.SP_TurGetirTableAdapter();
             this.kutuphaneDBDataSet1 = new UretimBilgiProje.kutuphaneDBDataSet1();
-            this.kutuphaneDBDataSet2 = new UretimBilgiProje.kutuphaneDBDataSet2();
-            this.sPYazarGetirBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.sP_YazarGetirTableAdapter = new UretimBilgiProje.kutuphaneDBDataSet2TableAdapters.SP_YazarGetirTableAdapter();
-            this.cmbox_Dil = new System.Windows.Forms.ComboBox();
-            this.kutuphaneDBDataSet3 = new UretimBilgiProje.kutuphaneDBDataSet3();
-            this.sPDilGetirBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.sP_DilGetirTableAdapter = new UretimBilgiProje.kutuphaneDBDataSet3TableAdapters.SP_DilGetirTableAdapter();
-            this.cmbox_Yayinci = new System.Windows.Forms.ComboBox();
-            this.kutuphaneDBDataSet4 = new UretimBilgiProje.kutuphaneDBDataSet4();
-            this.sPYayinciGetirBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.sP_YayinciGetirTableAdapter = new UretimBilgiProje.kutuphaneDBDataSet4TableAdapters.SP_YayinciGetirTableAdapter();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kutuphaneDBDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sPTurGetirBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kutuphaneDBDataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kutuphaneDBDataSet2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sPYazarGetirBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kutuphaneDBDataSet3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sPDilGetirBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kutuphaneDBDataSet4)).BeginInit();
+            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sPYayinciGetirBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kutuphaneDBDataSet4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sPDilGetirBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kutuphaneDBDataSet3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sPYazarGetirBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kutuphaneDBDataSet2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sPTurGetirBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kutuphaneDBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kutuphaneDBDataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -122,33 +122,6 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Kitap Arama";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.cmbox_Yayinci);
-            this.tabPage2.Controls.Add(this.cmbox_Dil);
-            this.tabPage2.Controls.Add(this.cmbox_Yazar);
-            this.tabPage2.Controls.Add(this.cmbox_Tur);
-            this.tabPage2.Controls.Add(this.label11);
-            this.tabPage2.Controls.Add(this.label10);
-            this.tabPage2.Controls.Add(this.label9);
-            this.tabPage2.Controls.Add(this.label8);
-            this.tabPage2.Controls.Add(this.label12);
-            this.tabPage2.Controls.Add(this.label7);
-            this.tabPage2.Controls.Add(this.label6);
-            this.tabPage2.Controls.Add(this.label5);
-            this.tabPage2.Controls.Add(this.txt_KitapSayisi);
-            this.tabPage2.Controls.Add(this.txt_SayfaSayisi);
-            this.tabPage2.Controls.Add(this.txt_KitapAdi);
-            this.tabPage2.Controls.Add(this.txt_KitapISBN);
-            this.tabPage2.Controls.Add(this.btn_KitapEkle);
-            this.tabPage2.Location = new System.Drawing.Point(4, 23);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(720, 502);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Kitap Ekle";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
@@ -185,6 +158,7 @@
             this.btn_KitapAra.TabIndex = 5;
             this.btn_KitapAra.Text = "Ara";
             this.btn_KitapAra.UseVisualStyleBackColor = true;
+            this.btn_KitapAra.Click += new System.EventHandler(this.btn_KitapAra_Click);
             // 
             // txt_KitapAdı
             // 
@@ -313,204 +287,32 @@
             this.columnHeader9.Text = "Yazar";
             this.columnHeader9.Width = 102;
             // 
-            // tabPage3
+            // tabPage2
             // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 23);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(720, 502);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "tabPage3";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // btn_KitapEkle
-            // 
-            this.btn_KitapEkle.Location = new System.Drawing.Point(624, 455);
-            this.btn_KitapEkle.Name = "btn_KitapEkle";
-            this.btn_KitapEkle.Size = new System.Drawing.Size(75, 23);
-            this.btn_KitapEkle.TabIndex = 0;
-            this.btn_KitapEkle.Text = "Ekle";
-            this.btn_KitapEkle.UseVisualStyleBackColor = true;
-            this.btn_KitapEkle.Click += new System.EventHandler(this.btn_KitapEkle_Click);
-            // 
-            // txt_KitapISBN
-            // 
-            this.txt_KitapISBN.Location = new System.Drawing.Point(83, 34);
-            this.txt_KitapISBN.Name = "txt_KitapISBN";
-            this.txt_KitapISBN.Size = new System.Drawing.Size(247, 22);
-            this.txt_KitapISBN.TabIndex = 1;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(20, 37);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 14);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "ISBN";
-            // 
-            // txt_KitapAdi
-            // 
-            this.txt_KitapAdi.Location = new System.Drawing.Point(83, 62);
-            this.txt_KitapAdi.Name = "txt_KitapAdi";
-            this.txt_KitapAdi.Size = new System.Drawing.Size(247, 22);
-            this.txt_KitapAdi.TabIndex = 1;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(20, 65);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(28, 14);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "Adı";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(20, 93);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 14);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "Türü";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(363, 70);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(70, 14);
-            this.label8.TabIndex = 2;
-            this.label8.Text = "Yayın Evi";
-            // 
-            // txt_SayfaSayisi
-            // 
-            this.txt_SayfaSayisi.Location = new System.Drawing.Point(454, 95);
-            this.txt_SayfaSayisi.Name = "txt_SayfaSayisi";
-            this.txt_SayfaSayisi.Size = new System.Drawing.Size(245, 22);
-            this.txt_SayfaSayisi.TabIndex = 1;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(363, 98);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(91, 14);
-            this.label9.TabIndex = 2;
-            this.label9.Text = "Sayfa Sayısı";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(363, 126);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(35, 14);
-            this.label10.TabIndex = 2;
-            this.label10.Text = "Dili";
-            // 
-            // txt_KitapSayisi
-            // 
-            this.txt_KitapSayisi.Location = new System.Drawing.Point(454, 37);
-            this.txt_KitapSayisi.Name = "txt_KitapSayisi";
-            this.txt_KitapSayisi.Size = new System.Drawing.Size(245, 22);
-            this.txt_KitapSayisi.TabIndex = 1;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(363, 40);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(91, 14);
-            this.label11.TabIndex = 2;
-            this.label11.Text = "Kitap Sayısı";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(20, 121);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(49, 14);
-            this.label12.TabIndex = 2;
-            this.label12.Text = "Yazarı";
-            // 
-            // cmbox_Tur
-            // 
-            this.cmbox_Tur.DataSource = this.sPTurGetirBindingSource;
-            this.cmbox_Tur.DisplayMember = "TUR_Adi";
-            this.cmbox_Tur.FormattingEnabled = true;
-            this.cmbox_Tur.Location = new System.Drawing.Point(83, 90);
-            this.cmbox_Tur.Name = "cmbox_Tur";
-            this.cmbox_Tur.Size = new System.Drawing.Size(247, 22);
-            this.cmbox_Tur.TabIndex = 3;
-            // 
-            // cmbox_Yazar
-            // 
-            this.cmbox_Yazar.DataSource = this.sPYazarGetirBindingSource;
-            this.cmbox_Yazar.DisplayMember = "YAZAR_AdiSoyadi";
-            this.cmbox_Yazar.FormattingEnabled = true;
-            this.cmbox_Yazar.Location = new System.Drawing.Point(83, 118);
-            this.cmbox_Yazar.Name = "cmbox_Yazar";
-            this.cmbox_Yazar.Size = new System.Drawing.Size(247, 22);
-            this.cmbox_Yazar.TabIndex = 4;
-            this.cmbox_Yazar.ValueMember = "YAZAR_ID";
-            // 
-            // kutuphaneDBDataSet
-            // 
-            this.kutuphaneDBDataSet.DataSetName = "kutuphaneDBDataSet";
-            this.kutuphaneDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // sPTurGetirBindingSource
-            // 
-            this.sPTurGetirBindingSource.DataMember = "SP_TurGetir";
-            this.sPTurGetirBindingSource.DataSource = this.kutuphaneDBDataSet;
-            // 
-            // sP_TurGetirTableAdapter
-            // 
-            this.sP_TurGetirTableAdapter.ClearBeforeFill = true;
-            // 
-            // kutuphaneDBDataSet1
-            // 
-            this.kutuphaneDBDataSet1.DataSetName = "kutuphaneDBDataSet1";
-            this.kutuphaneDBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // kutuphaneDBDataSet2
-            // 
-            this.kutuphaneDBDataSet2.DataSetName = "kutuphaneDBDataSet2";
-            this.kutuphaneDBDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // sPYazarGetirBindingSource
-            // 
-            this.sPYazarGetirBindingSource.DataMember = "SP_YazarGetir";
-            this.sPYazarGetirBindingSource.DataSource = this.kutuphaneDBDataSet2;
-            // 
-            // sP_YazarGetirTableAdapter
-            // 
-            this.sP_YazarGetirTableAdapter.ClearBeforeFill = true;
-            // 
-            // cmbox_Dil
-            // 
-            this.cmbox_Dil.DataSource = this.sPDilGetirBindingSource;
-            this.cmbox_Dil.DisplayMember = "DIL_Adi";
-            this.cmbox_Dil.FormattingEnabled = true;
-            this.cmbox_Dil.Location = new System.Drawing.Point(454, 123);
-            this.cmbox_Dil.Name = "cmbox_Dil";
-            this.cmbox_Dil.Size = new System.Drawing.Size(245, 22);
-            this.cmbox_Dil.TabIndex = 4;
-            this.cmbox_Dil.ValueMember = "DIL_ID";
-            // 
-            // kutuphaneDBDataSet3
-            // 
-            this.kutuphaneDBDataSet3.DataSetName = "kutuphaneDBDataSet3";
-            this.kutuphaneDBDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // sPDilGetirBindingSource
-            // 
-            this.sPDilGetirBindingSource.DataMember = "SP_DilGetir";
-            this.sPDilGetirBindingSource.DataSource = this.kutuphaneDBDataSet3;
-            // 
-            // sP_DilGetirTableAdapter
-            // 
-            this.sP_DilGetirTableAdapter.ClearBeforeFill = true;
+            this.tabPage2.Controls.Add(this.cmbox_Yayinci);
+            this.tabPage2.Controls.Add(this.cmbox_Dil);
+            this.tabPage2.Controls.Add(this.cmbox_Yazar);
+            this.tabPage2.Controls.Add(this.cmbox_Tur);
+            this.tabPage2.Controls.Add(this.label11);
+            this.tabPage2.Controls.Add(this.label10);
+            this.tabPage2.Controls.Add(this.label9);
+            this.tabPage2.Controls.Add(this.label8);
+            this.tabPage2.Controls.Add(this.label12);
+            this.tabPage2.Controls.Add(this.label7);
+            this.tabPage2.Controls.Add(this.label6);
+            this.tabPage2.Controls.Add(this.label5);
+            this.tabPage2.Controls.Add(this.txt_KitapSayisi);
+            this.tabPage2.Controls.Add(this.txt_SayfaSayisi);
+            this.tabPage2.Controls.Add(this.txt_KitapAdi);
+            this.tabPage2.Controls.Add(this.txt_KitapISBN);
+            this.tabPage2.Controls.Add(this.btn_KitapEkle);
+            this.tabPage2.Location = new System.Drawing.Point(4, 23);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(720, 502);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Kitap Ekle";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // cmbox_Yayinci
             // 
@@ -523,15 +325,214 @@
             this.cmbox_Yayinci.TabIndex = 4;
             this.cmbox_Yayinci.ValueMember = "YAYINCI_ID";
             // 
+            // sPYayinciGetirBindingSource
+            // 
+            this.sPYayinciGetirBindingSource.DataMember = "SP_YayinciGetir";
+            this.sPYayinciGetirBindingSource.DataSource = this.kutuphaneDBDataSet4;
+            // 
             // kutuphaneDBDataSet4
             // 
             this.kutuphaneDBDataSet4.DataSetName = "kutuphaneDBDataSet4";
             this.kutuphaneDBDataSet4.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // sPYayinciGetirBindingSource
+            // cmbox_Dil
             // 
-            this.sPYayinciGetirBindingSource.DataMember = "SP_YayinciGetir";
-            this.sPYayinciGetirBindingSource.DataSource = this.kutuphaneDBDataSet4;
+            this.cmbox_Dil.DataSource = this.sPDilGetirBindingSource;
+            this.cmbox_Dil.DisplayMember = "DIL_Adi";
+            this.cmbox_Dil.FormattingEnabled = true;
+            this.cmbox_Dil.Location = new System.Drawing.Point(454, 123);
+            this.cmbox_Dil.Name = "cmbox_Dil";
+            this.cmbox_Dil.Size = new System.Drawing.Size(245, 22);
+            this.cmbox_Dil.TabIndex = 4;
+            this.cmbox_Dil.ValueMember = "DIL_ID";
+            // 
+            // sPDilGetirBindingSource
+            // 
+            this.sPDilGetirBindingSource.DataMember = "SP_DilGetir";
+            this.sPDilGetirBindingSource.DataSource = this.kutuphaneDBDataSet3;
+            // 
+            // kutuphaneDBDataSet3
+            // 
+            this.kutuphaneDBDataSet3.DataSetName = "kutuphaneDBDataSet3";
+            this.kutuphaneDBDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // cmbox_Yazar
+            // 
+            this.cmbox_Yazar.DataSource = this.sPYazarGetirBindingSource;
+            this.cmbox_Yazar.DisplayMember = "YAZAR_AdiSoyadi";
+            this.cmbox_Yazar.FormattingEnabled = true;
+            this.cmbox_Yazar.Location = new System.Drawing.Point(83, 118);
+            this.cmbox_Yazar.Name = "cmbox_Yazar";
+            this.cmbox_Yazar.Size = new System.Drawing.Size(247, 22);
+            this.cmbox_Yazar.TabIndex = 4;
+            this.cmbox_Yazar.ValueMember = "YAZAR_ID";
+            // 
+            // sPYazarGetirBindingSource
+            // 
+            this.sPYazarGetirBindingSource.DataMember = "SP_YazarGetir";
+            this.sPYazarGetirBindingSource.DataSource = this.kutuphaneDBDataSet2;
+            // 
+            // kutuphaneDBDataSet2
+            // 
+            this.kutuphaneDBDataSet2.DataSetName = "kutuphaneDBDataSet2";
+            this.kutuphaneDBDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // cmbox_Tur
+            // 
+            this.cmbox_Tur.DataSource = this.sPTurGetirBindingSource;
+            this.cmbox_Tur.DisplayMember = "TUR_Adi";
+            this.cmbox_Tur.FormattingEnabled = true;
+            this.cmbox_Tur.Location = new System.Drawing.Point(83, 90);
+            this.cmbox_Tur.Name = "cmbox_Tur";
+            this.cmbox_Tur.Size = new System.Drawing.Size(247, 22);
+            this.cmbox_Tur.TabIndex = 3;
+            // 
+            // sPTurGetirBindingSource
+            // 
+            this.sPTurGetirBindingSource.DataMember = "SP_TurGetir";
+            this.sPTurGetirBindingSource.DataSource = this.kutuphaneDBDataSet;
+            // 
+            // kutuphaneDBDataSet
+            // 
+            this.kutuphaneDBDataSet.DataSetName = "kutuphaneDBDataSet";
+            this.kutuphaneDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(363, 40);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(91, 14);
+            this.label11.TabIndex = 2;
+            this.label11.Text = "Kitap Sayısı";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(363, 126);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(35, 14);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "Dili";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(363, 98);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(91, 14);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "Sayfa Sayısı";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(363, 70);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(70, 14);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "Yayın Evi";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(20, 121);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(49, 14);
+            this.label12.TabIndex = 2;
+            this.label12.Text = "Yazarı";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(20, 93);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(35, 14);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "Türü";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(20, 65);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(28, 14);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Adı";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(20, 37);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 14);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "ISBN";
+            // 
+            // txt_KitapSayisi
+            // 
+            this.txt_KitapSayisi.Location = new System.Drawing.Point(454, 37);
+            this.txt_KitapSayisi.Name = "txt_KitapSayisi";
+            this.txt_KitapSayisi.Size = new System.Drawing.Size(245, 22);
+            this.txt_KitapSayisi.TabIndex = 1;
+            // 
+            // txt_SayfaSayisi
+            // 
+            this.txt_SayfaSayisi.Location = new System.Drawing.Point(454, 95);
+            this.txt_SayfaSayisi.Name = "txt_SayfaSayisi";
+            this.txt_SayfaSayisi.Size = new System.Drawing.Size(245, 22);
+            this.txt_SayfaSayisi.TabIndex = 1;
+            // 
+            // txt_KitapAdi
+            // 
+            this.txt_KitapAdi.Location = new System.Drawing.Point(83, 62);
+            this.txt_KitapAdi.Name = "txt_KitapAdi";
+            this.txt_KitapAdi.Size = new System.Drawing.Size(247, 22);
+            this.txt_KitapAdi.TabIndex = 1;
+            // 
+            // txt_KitapISBN
+            // 
+            this.txt_KitapISBN.Location = new System.Drawing.Point(83, 34);
+            this.txt_KitapISBN.Name = "txt_KitapISBN";
+            this.txt_KitapISBN.Size = new System.Drawing.Size(247, 22);
+            this.txt_KitapISBN.TabIndex = 1;
+            // 
+            // btn_KitapEkle
+            // 
+            this.btn_KitapEkle.Location = new System.Drawing.Point(624, 455);
+            this.btn_KitapEkle.Name = "btn_KitapEkle";
+            this.btn_KitapEkle.Size = new System.Drawing.Size(75, 23);
+            this.btn_KitapEkle.TabIndex = 0;
+            this.btn_KitapEkle.Text = "Ekle";
+            this.btn_KitapEkle.UseVisualStyleBackColor = true;
+            this.btn_KitapEkle.Click += new System.EventHandler(this.btn_KitapEkle_Click);
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 23);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(720, 502);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "tabPage3";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // sP_TurGetirTableAdapter
+            // 
+            this.sP_TurGetirTableAdapter.ClearBeforeFill = true;
+            // 
+            // kutuphaneDBDataSet1
+            // 
+            this.kutuphaneDBDataSet1.DataSetName = "kutuphaneDBDataSet1";
+            this.kutuphaneDBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // sP_YazarGetirTableAdapter
+            // 
+            this.sP_YazarGetirTableAdapter.ClearBeforeFill = true;
+            // 
+            // sP_DilGetirTableAdapter
+            // 
+            this.sP_DilGetirTableAdapter.ClearBeforeFill = true;
             // 
             // sP_YayinciGetirTableAdapter
             // 
@@ -550,19 +551,19 @@
             this.Load += new System.EventHandler(this.Form2_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kutuphaneDBDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sPTurGetirBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kutuphaneDBDataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kutuphaneDBDataSet2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sPYazarGetirBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kutuphaneDBDataSet3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sPDilGetirBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kutuphaneDBDataSet4)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sPYayinciGetirBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kutuphaneDBDataSet4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sPDilGetirBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kutuphaneDBDataSet3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sPYazarGetirBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kutuphaneDBDataSet2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sPTurGetirBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kutuphaneDBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kutuphaneDBDataSet1)).EndInit();
             this.ResumeLayout(false);
 
         }

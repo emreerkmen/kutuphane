@@ -57,7 +57,7 @@ namespace UretimBilgiProje
                         lvi.SubItems.Add(kitap.DIL_Adi);
                         lvi.SubItems.Add(kitap.KITAP_TopSayi.ToString());
                         lvi.SubItems.Add(kitap.KITAP_UygunSayi.ToString());
-                        lvi.SubItems.Add(kitap.YAZAR_Adi);
+                        lvi.SubItems.Add(kitap.YAZAR_AdiSoyadi);
                         lst_KitapAra.Items.Add(lvi);
                     }
                 }
@@ -84,7 +84,7 @@ namespace UretimBilgiProje
                         lvi.SubItems.Add(kitap.DIL_Adi);
                         lvi.SubItems.Add(kitap.KITAP_TopSayi.ToString());
                         lvi.SubItems.Add(kitap.KITAP_UygunSayi.ToString());
-                        lvi.SubItems.Add(kitap.YAZAR_Adi);
+                        lvi.SubItems.Add(kitap.YAZAR_AdiSoyadi);
                         lst_KitapAra.Items.Add(lvi);
                     }
                 }
@@ -111,7 +111,7 @@ namespace UretimBilgiProje
                         lvi.SubItems.Add(kitap.DIL_Adi);
                         lvi.SubItems.Add(kitap.KITAP_TopSayi.ToString());
                         lvi.SubItems.Add(kitap.KITAP_UygunSayi.ToString());
-                        lvi.SubItems.Add(kitap.YAZAR_Adi);
+                        lvi.SubItems.Add(kitap.YAZAR_AdiSoyadi);
                         lst_KitapAra.Items.Add(lvi);
                     }
                 }
@@ -123,8 +123,7 @@ namespace UretimBilgiProje
             else if(cmb_Tur.Text != "Seçiniz")
             {
                 lst_KitapAra.Items.Clear();
-                List<SP_TureGoreAra_Result> lstKitap = entity.SP_TureGoreAra
-                    (cmb_Tur.Text).ToList();
+                List<SP_TureGoreAra_Result> lstKitap = entity.SP_TureGoreAra(cmb_Tur.Text).ToList();
 
                 if (lstKitap.Count() != 0)
                 {
@@ -138,7 +137,7 @@ namespace UretimBilgiProje
                         lvi.SubItems.Add(kitap.DIL_Adi);
                         lvi.SubItems.Add(kitap.KITAP_TopSayi.ToString());
                         lvi.SubItems.Add(kitap.KITAP_UygunSayi.ToString());
-                        lvi.SubItems.Add(kitap.YAZAR_Adi);
+                        lvi.SubItems.Add(kitap.YAZAR_AdiSoyadi);
                         lst_KitapAra.Items.Add(lvi);
                     }
                 }

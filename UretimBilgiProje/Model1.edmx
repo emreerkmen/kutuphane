@@ -250,6 +250,7 @@
           <Parameter Name="version" Type="int" Mode="In" />
           <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
         </Function>
+        <Function Name="SP_DilGetir" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
@@ -297,6 +298,7 @@
           <Parameter Name="uyeTC" Type="varchar" Mode="In" />
           <Parameter Name="uyeSifre" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="SP_YayinciGetir" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_YazaraGoreAra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="yazarAdi" Type="varchar" Mode="In" />
         </Function>
@@ -669,12 +671,6 @@
             <Parameter Name="uyeTC" Mode="In" Type="String" />
             <Parameter Name="uyeSifre" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="SP_ISBNileAra" ReturnType="Collection(kutuphaneDBModel.SP_ISBNileAra_Result)">
-          <Parameter Name="isbn" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SP_KitapAdiylaAra" ReturnType="Collection(kutuphaneDBModel.SP_KitapAdiylaAra_Result)">
-          <Parameter Name="kitapAdi" Mode="In" Type="String" />
-          </FunctionImport>
           <FunctionImport Name="SP_KitapEkle">
             <Parameter Name="isbn" Mode="In" Type="String" />
             <Parameter Name="adi" Mode="In" Type="String" />
@@ -686,13 +682,7 @@
             <Parameter Name="uygunSayi" Mode="In" Type="Int32" />
             <Parameter Name="yazarID" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SP_YazaraGoreAra" ReturnType="Collection(kutuphaneDBModel.SP_YazaraGoreAra_Result)">
-          <Parameter Name="yazarAdi" Mode="In" Type="String" />
-          </FunctionImport>
           <FunctionImport Name="SP_TurGetir" ReturnType="Collection(String)" />
-          <FunctionImport Name="SP_TureGoreAra" ReturnType="Collection(kutuphaneDBModel.SP_TureGoreAra_Result)">
-          <Parameter Name="turAdi" Mode="In" Type="String" />
-          </FunctionImport>
           <FunctionImport Name="SP_YazarGetir" ReturnType="Collection(kutuphaneDBModel.SP_YazarGetir_Result)" />
           <EntitySet Name="sysdiagrams" EntityType="kutuphaneDBModel.sysdiagrams" />
           <FunctionImport Name="sp_alterdiagram">
@@ -725,68 +715,21 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="SP_DilGetir" ReturnType="Collection(kutuphaneDBModel.SP_DilGetir_Result)" />
+          <FunctionImport Name="SP_YayinciGetir" ReturnType="Collection(kutuphaneDBModel.SP_YayinciGetir_Result)" />
+          <FunctionImport Name="SP_TureGoreAra" ReturnType="Collection(kutuphaneDBModel.SP_TureGoreAra_Result)">
+          <Parameter Name="turAdi" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_KitapAdiylaAra" ReturnType="Collection(kutuphaneDBModel.SP_KitapAdiylaAra_Result)">
+            <Parameter Name="kitapAdi" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_ISBNileAra" ReturnType="Collection(kutuphaneDBModel.SP_ISBNileAra_Result)">
+            <Parameter Name="isbn" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_YazaraGoreAra" ReturnType="Collection(kutuphaneDBModel.SP_YazaraGoreAra_Result)">
+            <Parameter Name="yazarAdi" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
-        <ComplexType Name="SP_ISBNileAra_Result">
-          <Property Type="String" Name="KITAP_ISBN" Nullable="false" MaxLength="13" />
-          <Property Type="String" Name="KITAP_Adi" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="KITAP_TurID" Nullable="false" />
-          <Property Type="Int32" Name="KITAP_YayinciID" Nullable="false" />
-          <Property Type="Int32" Name="KITAP_Sayfa" Nullable="false" />
-          <Property Type="Int32" Name="KITAP_DilID" Nullable="false" />
-          <Property Type="Int32" Name="KITAP_TopSayi" Nullable="false" />
-          <Property Type="Int32" Name="KITAP_UygunSayi" Nullable="false" />
-          <Property Type="Int32" Name="KITAP_YazarID" Nullable="false" />
-          <Property Type="String" Name="DIL_Adi" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="TUR_Adi" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="YAYINCI_Adi" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="YAZAR_Adi" Nullable="false" MaxLength="50" />
-        </ComplexType>
-        <ComplexType Name="SP_KitapAdiylaAra_Result">
-          <Property Type="String" Name="KITAP_ISBN" Nullable="false" MaxLength="13" />
-          <Property Type="String" Name="KITAP_Adi" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="KITAP_TurID" Nullable="false" />
-          <Property Type="Int32" Name="KITAP_YayinciID" Nullable="false" />
-          <Property Type="Int32" Name="KITAP_Sayfa" Nullable="false" />
-          <Property Type="Int32" Name="KITAP_DilID" Nullable="false" />
-          <Property Type="Int32" Name="KITAP_TopSayi" Nullable="false" />
-          <Property Type="Int32" Name="KITAP_UygunSayi" Nullable="false" />
-          <Property Type="Int32" Name="KITAP_YazarID" Nullable="false" />
-          <Property Type="String" Name="DIL_Adi" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="TUR_Adi" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="YAYINCI_Adi" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="YAZAR_Adi" Nullable="false" MaxLength="50" />
-        </ComplexType>
-        <ComplexType Name="SP_YazaraGoreAra_Result">
-          <Property Type="String" Name="KITAP_ISBN" Nullable="false" MaxLength="13" />
-          <Property Type="String" Name="KITAP_Adi" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="KITAP_TurID" Nullable="false" />
-          <Property Type="Int32" Name="KITAP_YayinciID" Nullable="false" />
-          <Property Type="Int32" Name="KITAP_Sayfa" Nullable="false" />
-          <Property Type="Int32" Name="KITAP_DilID" Nullable="false" />
-          <Property Type="Int32" Name="KITAP_TopSayi" Nullable="false" />
-          <Property Type="Int32" Name="KITAP_UygunSayi" Nullable="false" />
-          <Property Type="Int32" Name="KITAP_YazarID" Nullable="false" />
-          <Property Type="String" Name="DIL_Adi" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="TUR_Adi" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="YAYINCI_Adi" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="YAZAR_Adi" Nullable="false" MaxLength="50" />
-        </ComplexType>
-        <ComplexType Name="SP_TureGoreAra_Result">
-          <Property Type="String" Name="KITAP_ISBN" Nullable="false" MaxLength="13" />
-          <Property Type="String" Name="KITAP_Adi" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="KITAP_TurID" Nullable="false" />
-          <Property Type="Int32" Name="KITAP_YayinciID" Nullable="false" />
-          <Property Type="Int32" Name="KITAP_Sayfa" Nullable="false" />
-          <Property Type="Int32" Name="KITAP_DilID" Nullable="false" />
-          <Property Type="Int32" Name="KITAP_TopSayi" Nullable="false" />
-          <Property Type="Int32" Name="KITAP_UygunSayi" Nullable="false" />
-          <Property Type="Int32" Name="KITAP_YazarID" Nullable="false" />
-          <Property Type="String" Name="DIL_Adi" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="TUR_Adi" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="YAYINCI_Adi" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="YAZAR_Adi" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="YAZAR_Soyadi" Nullable="false" MaxLength="50" />
-        </ComplexType>
         <ComplexType Name="SP_YazarGetir_Result">
           <Property Type="Int32" Name="YAZAR_ID" Nullable="false" />
           <Property Type="String" Name="YAZAR_Adi" Nullable="false" MaxLength="50" />
@@ -812,6 +755,74 @@
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SP_DilGetir_Result">
+          <Property Type="Int32" Name="DIL_ID" Nullable="false" />
+          <Property Type="String" Name="DIL_Adi" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SP_YayinciGetir_Result">
+          <Property Type="Int32" Name="YAYINCI_ID" Nullable="false" />
+          <Property Type="String" Name="YAYINCI_Adi" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SP_TureGoreAra_Result">
+          <Property Type="String" Name="KITAP_ISBN" Nullable="false" MaxLength="13" />
+          <Property Type="String" Name="KITAP_Adi" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="KITAP_TurID" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_YayinciID" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_Sayfa" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_DilID" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_TopSayi" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_UygunSayi" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_YazarID" Nullable="false" />
+          <Property Type="String" Name="DIL_Adi" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TUR_Adi" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="YAYINCI_Adi" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="YAZAR_AdiSoyadi" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SP_KitapAdiylaAra_Result">
+          <Property Type="String" Name="KITAP_ISBN" Nullable="false" MaxLength="13" />
+          <Property Type="String" Name="KITAP_Adi" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="KITAP_TurID" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_YayinciID" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_Sayfa" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_DilID" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_TopSayi" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_UygunSayi" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_YazarID" Nullable="false" />
+          <Property Type="String" Name="DIL_Adi" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TUR_Adi" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="YAYINCI_Adi" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="YAZAR_AdiSoyadi" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SP_ISBNileAra_Result">
+          <Property Type="String" Name="KITAP_ISBN" Nullable="false" MaxLength="13" />
+          <Property Type="String" Name="KITAP_Adi" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="KITAP_TurID" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_YayinciID" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_Sayfa" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_DilID" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_TopSayi" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_UygunSayi" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_YazarID" Nullable="false" />
+          <Property Type="String" Name="DIL_Adi" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TUR_Adi" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="YAYINCI_Adi" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="YAZAR_AdiSoyadi" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SP_YazaraGoreAra_Result">
+          <Property Type="String" Name="KITAP_ISBN" Nullable="false" MaxLength="13" />
+          <Property Type="String" Name="KITAP_Adi" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="KITAP_TurID" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_YayinciID" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_Sayfa" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_DilID" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_TopSayi" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_UygunSayi" Nullable="false" />
+          <Property Type="Int32" Name="KITAP_YazarID" Nullable="false" />
+          <Property Type="String" Name="DIL_Adi" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TUR_Adi" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="YAYINCI_Adi" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="YAZAR_AdiSoyadi" Nullable="false" MaxLength="50" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -919,85 +930,8 @@
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="SP_gorevliLogin" FunctionName="kutuphaneDBModel.Store.SP_gorevliLogin" />
           <FunctionImportMapping FunctionImportName="SP_uyeLogin" FunctionName="kutuphaneDBModel.Store.SP_uyeLogin" />
-          <FunctionImportMapping FunctionImportName="SP_ISBNileAra" FunctionName="kutuphaneDBModel.Store.SP_ISBNileAra">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="kutuphaneDBModel.SP_ISBNileAra_Result">
-                <ScalarProperty Name="KITAP_ISBN" ColumnName="KITAP_ISBN" />
-                <ScalarProperty Name="KITAP_Adi" ColumnName="KITAP_Adi" />
-                <ScalarProperty Name="KITAP_TurID" ColumnName="KITAP_TurID" />
-                <ScalarProperty Name="KITAP_YayinciID" ColumnName="KITAP_YayinciID" />
-                <ScalarProperty Name="KITAP_Sayfa" ColumnName="KITAP_Sayfa" />
-                <ScalarProperty Name="KITAP_DilID" ColumnName="KITAP_DilID" />
-                <ScalarProperty Name="KITAP_TopSayi" ColumnName="KITAP_TopSayi" />
-                <ScalarProperty Name="KITAP_UygunSayi" ColumnName="KITAP_UygunSayi" />
-                <ScalarProperty Name="KITAP_YazarID" ColumnName="KITAP_YazarID" />
-                <ScalarProperty Name="DIL_Adi" ColumnName="DIL_Adi" />
-                <ScalarProperty Name="TUR_Adi" ColumnName="TUR_Adi" />
-                <ScalarProperty Name="YAYINCI_Adi" ColumnName="YAYINCI_Adi" />
-                <ScalarProperty Name="YAZAR_Adi" ColumnName="YAZAR_Adi" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_KitapAdiylaAra" FunctionName="kutuphaneDBModel.Store.SP_KitapAdiylaAra">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="kutuphaneDBModel.SP_KitapAdiylaAra_Result">
-                <ScalarProperty Name="KITAP_ISBN" ColumnName="KITAP_ISBN" />
-                <ScalarProperty Name="KITAP_Adi" ColumnName="KITAP_Adi" />
-                <ScalarProperty Name="KITAP_TurID" ColumnName="KITAP_TurID" />
-                <ScalarProperty Name="KITAP_YayinciID" ColumnName="KITAP_YayinciID" />
-                <ScalarProperty Name="KITAP_Sayfa" ColumnName="KITAP_Sayfa" />
-                <ScalarProperty Name="KITAP_DilID" ColumnName="KITAP_DilID" />
-                <ScalarProperty Name="KITAP_TopSayi" ColumnName="KITAP_TopSayi" />
-                <ScalarProperty Name="KITAP_UygunSayi" ColumnName="KITAP_UygunSayi" />
-                <ScalarProperty Name="KITAP_YazarID" ColumnName="KITAP_YazarID" />
-                <ScalarProperty Name="DIL_Adi" ColumnName="DIL_Adi" />
-                <ScalarProperty Name="TUR_Adi" ColumnName="TUR_Adi" />
-                <ScalarProperty Name="YAYINCI_Adi" ColumnName="YAYINCI_Adi" />
-                <ScalarProperty Name="YAZAR_Adi" ColumnName="YAZAR_Adi" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_KitapEkle" FunctionName="kutuphaneDBModel.Store.SP_KitapEkle" />
-          <FunctionImportMapping FunctionImportName="SP_YazaraGoreAra" FunctionName="kutuphaneDBModel.Store.SP_YazaraGoreAra">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="kutuphaneDBModel.SP_YazaraGoreAra_Result">
-                <ScalarProperty Name="KITAP_ISBN" ColumnName="KITAP_ISBN" />
-                <ScalarProperty Name="KITAP_Adi" ColumnName="KITAP_Adi" />
-                <ScalarProperty Name="KITAP_TurID" ColumnName="KITAP_TurID" />
-                <ScalarProperty Name="KITAP_YayinciID" ColumnName="KITAP_YayinciID" />
-                <ScalarProperty Name="KITAP_Sayfa" ColumnName="KITAP_Sayfa" />
-                <ScalarProperty Name="KITAP_DilID" ColumnName="KITAP_DilID" />
-                <ScalarProperty Name="KITAP_TopSayi" ColumnName="KITAP_TopSayi" />
-                <ScalarProperty Name="KITAP_UygunSayi" ColumnName="KITAP_UygunSayi" />
-                <ScalarProperty Name="KITAP_YazarID" ColumnName="KITAP_YazarID" />
-                <ScalarProperty Name="DIL_Adi" ColumnName="DIL_Adi" />
-                <ScalarProperty Name="TUR_Adi" ColumnName="TUR_Adi" />
-                <ScalarProperty Name="YAYINCI_Adi" ColumnName="YAYINCI_Adi" />
-                <ScalarProperty Name="YAZAR_Adi" ColumnName="YAZAR_Adi" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_TurGetir" FunctionName="kutuphaneDBModel.Store.SP_TurGetir" />
-          <FunctionImportMapping FunctionImportName="SP_TureGoreAra" FunctionName="kutuphaneDBModel.Store.SP_TureGoreAra">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="kutuphaneDBModel.SP_TureGoreAra_Result">
-                <ScalarProperty Name="KITAP_ISBN" ColumnName="KITAP_ISBN" />
-                <ScalarProperty Name="KITAP_Adi" ColumnName="KITAP_Adi" />
-                <ScalarProperty Name="KITAP_TurID" ColumnName="KITAP_TurID" />
-                <ScalarProperty Name="KITAP_YayinciID" ColumnName="KITAP_YayinciID" />
-                <ScalarProperty Name="KITAP_Sayfa" ColumnName="KITAP_Sayfa" />
-                <ScalarProperty Name="KITAP_DilID" ColumnName="KITAP_DilID" />
-                <ScalarProperty Name="KITAP_TopSayi" ColumnName="KITAP_TopSayi" />
-                <ScalarProperty Name="KITAP_UygunSayi" ColumnName="KITAP_UygunSayi" />
-                <ScalarProperty Name="KITAP_YazarID" ColumnName="KITAP_YazarID" />
-                <ScalarProperty Name="DIL_Adi" ColumnName="DIL_Adi" />
-                <ScalarProperty Name="TUR_Adi" ColumnName="TUR_Adi" />
-                <ScalarProperty Name="YAYINCI_Adi" ColumnName="YAYINCI_Adi" />
-                <ScalarProperty Name="YAZAR_Adi" ColumnName="YAZAR_Adi" />
-                <ScalarProperty Name="YAZAR_Soyadi" ColumnName="YAZAR_Soyadi" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_YazarGetir" FunctionName="kutuphaneDBModel.Store.SP_YazarGetir">
             <ResultMapping>
               <ComplexTypeMapping TypeName="kutuphaneDBModel.SP_YazarGetir_Result">
@@ -1042,6 +976,98 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="kutuphaneDBModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="kutuphaneDBModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="SP_DilGetir" FunctionName="kutuphaneDBModel.Store.SP_DilGetir">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="kutuphaneDBModel.SP_DilGetir_Result">
+                <ScalarProperty Name="DIL_ID" ColumnName="DIL_ID" />
+                <ScalarProperty Name="DIL_Adi" ColumnName="DIL_Adi" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_YayinciGetir" FunctionName="kutuphaneDBModel.Store.SP_YayinciGetir">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="kutuphaneDBModel.SP_YayinciGetir_Result">
+                <ScalarProperty Name="YAYINCI_ID" ColumnName="YAYINCI_ID" />
+                <ScalarProperty Name="YAYINCI_Adi" ColumnName="YAYINCI_Adi" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_TureGoreAra" FunctionName="kutuphaneDBModel.Store.SP_TureGoreAra">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="kutuphaneDBModel.SP_TureGoreAra_Result">
+                <ScalarProperty Name="KITAP_ISBN" ColumnName="KITAP_ISBN" />
+                <ScalarProperty Name="KITAP_Adi" ColumnName="KITAP_Adi" />
+                <ScalarProperty Name="KITAP_TurID" ColumnName="KITAP_TurID" />
+                <ScalarProperty Name="KITAP_YayinciID" ColumnName="KITAP_YayinciID" />
+                <ScalarProperty Name="KITAP_Sayfa" ColumnName="KITAP_Sayfa" />
+                <ScalarProperty Name="KITAP_DilID" ColumnName="KITAP_DilID" />
+                <ScalarProperty Name="KITAP_TopSayi" ColumnName="KITAP_TopSayi" />
+                <ScalarProperty Name="KITAP_UygunSayi" ColumnName="KITAP_UygunSayi" />
+                <ScalarProperty Name="KITAP_YazarID" ColumnName="KITAP_YazarID" />
+                <ScalarProperty Name="DIL_Adi" ColumnName="DIL_Adi" />
+                <ScalarProperty Name="TUR_Adi" ColumnName="TUR_Adi" />
+                <ScalarProperty Name="YAYINCI_Adi" ColumnName="YAYINCI_Adi" />
+                <ScalarProperty Name="YAZAR_AdiSoyadi" ColumnName="YAZAR_AdiSoyadi" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_KitapAdiylaAra" FunctionName="kutuphaneDBModel.Store.SP_KitapAdiylaAra">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="kutuphaneDBModel.SP_KitapAdiylaAra_Result">
+                <ScalarProperty Name="KITAP_ISBN" ColumnName="KITAP_ISBN" />
+                <ScalarProperty Name="KITAP_Adi" ColumnName="KITAP_Adi" />
+                <ScalarProperty Name="KITAP_TurID" ColumnName="KITAP_TurID" />
+                <ScalarProperty Name="KITAP_YayinciID" ColumnName="KITAP_YayinciID" />
+                <ScalarProperty Name="KITAP_Sayfa" ColumnName="KITAP_Sayfa" />
+                <ScalarProperty Name="KITAP_DilID" ColumnName="KITAP_DilID" />
+                <ScalarProperty Name="KITAP_TopSayi" ColumnName="KITAP_TopSayi" />
+                <ScalarProperty Name="KITAP_UygunSayi" ColumnName="KITAP_UygunSayi" />
+                <ScalarProperty Name="KITAP_YazarID" ColumnName="KITAP_YazarID" />
+                <ScalarProperty Name="DIL_Adi" ColumnName="DIL_Adi" />
+                <ScalarProperty Name="TUR_Adi" ColumnName="TUR_Adi" />
+                <ScalarProperty Name="YAYINCI_Adi" ColumnName="YAYINCI_Adi" />
+                <ScalarProperty Name="YAZAR_AdiSoyadi" ColumnName="YAZAR_AdiSoyadi" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_ISBNileAra" FunctionName="kutuphaneDBModel.Store.SP_ISBNileAra">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="kutuphaneDBModel.SP_ISBNileAra_Result">
+                <ScalarProperty Name="KITAP_ISBN" ColumnName="KITAP_ISBN" />
+                <ScalarProperty Name="KITAP_Adi" ColumnName="KITAP_Adi" />
+                <ScalarProperty Name="KITAP_TurID" ColumnName="KITAP_TurID" />
+                <ScalarProperty Name="KITAP_YayinciID" ColumnName="KITAP_YayinciID" />
+                <ScalarProperty Name="KITAP_Sayfa" ColumnName="KITAP_Sayfa" />
+                <ScalarProperty Name="KITAP_DilID" ColumnName="KITAP_DilID" />
+                <ScalarProperty Name="KITAP_TopSayi" ColumnName="KITAP_TopSayi" />
+                <ScalarProperty Name="KITAP_UygunSayi" ColumnName="KITAP_UygunSayi" />
+                <ScalarProperty Name="KITAP_YazarID" ColumnName="KITAP_YazarID" />
+                <ScalarProperty Name="DIL_Adi" ColumnName="DIL_Adi" />
+                <ScalarProperty Name="TUR_Adi" ColumnName="TUR_Adi" />
+                <ScalarProperty Name="YAYINCI_Adi" ColumnName="YAYINCI_Adi" />
+                <ScalarProperty Name="YAZAR_AdiSoyadi" ColumnName="YAZAR_AdiSoyadi" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_YazaraGoreAra" FunctionName="kutuphaneDBModel.Store.SP_YazaraGoreAra">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="kutuphaneDBModel.SP_YazaraGoreAra_Result">
+                <ScalarProperty Name="KITAP_ISBN" ColumnName="KITAP_ISBN" />
+                <ScalarProperty Name="KITAP_Adi" ColumnName="KITAP_Adi" />
+                <ScalarProperty Name="KITAP_TurID" ColumnName="KITAP_TurID" />
+                <ScalarProperty Name="KITAP_YayinciID" ColumnName="KITAP_YayinciID" />
+                <ScalarProperty Name="KITAP_Sayfa" ColumnName="KITAP_Sayfa" />
+                <ScalarProperty Name="KITAP_DilID" ColumnName="KITAP_DilID" />
+                <ScalarProperty Name="KITAP_TopSayi" ColumnName="KITAP_TopSayi" />
+                <ScalarProperty Name="KITAP_UygunSayi" ColumnName="KITAP_UygunSayi" />
+                <ScalarProperty Name="KITAP_YazarID" ColumnName="KITAP_YazarID" />
+                <ScalarProperty Name="DIL_Adi" ColumnName="DIL_Adi" />
+                <ScalarProperty Name="TUR_Adi" ColumnName="TUR_Adi" />
+                <ScalarProperty Name="YAYINCI_Adi" ColumnName="YAYINCI_Adi" />
+                <ScalarProperty Name="YAZAR_AdiSoyadi" ColumnName="YAZAR_AdiSoyadi" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

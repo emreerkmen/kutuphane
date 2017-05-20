@@ -25,6 +25,6 @@ namespace UretimBilgiProje
         public string DIL_Adi { get; set; }
         public string TUR_Adi { get; set; }
         public string YAYINCI_Adi { get; set; }
-        public string YAZAR_Adi { get; set; }
+        public string YAZAR_AdiSoyadi { get; set; }
     }
 }
